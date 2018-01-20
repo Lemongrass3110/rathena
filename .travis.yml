@@ -85,6 +85,7 @@ matrix:
       env:
         - MATRIX_EVAL="CC=clang-3.9 && CXX=clang++-3.9"
         - CONFIGURE_FLAGS="--enable-prere=no --enable-vip=no --enable-buildbot=yes"
+#   Version 4
     - os: linux
       addons:
         apt:
@@ -95,6 +96,7 @@ matrix:
       env:
         - MATRIX_EVAL="CC=clang-4.0 && CXX=clang++-4.0"
         - CONFIGURE_FLAGS="--enable-prere=no --enable-vip=no --enable-buildbot=yes"
+#   Version 5
     - os: linux
       addons:
         apt:
@@ -102,6 +104,14 @@ matrix:
             - llvm-toolchain-trusty-5.0
           packages:
             - clang-5.0
+      env:
+        - MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0"
+        - CONFIGURE_FLAGS="--enable-prere=no --enable-vip=no --enable-buildbot=yes"
+#   Version 5 on OSX
+    - os: osx
+      osx_image: xcode8
+      env:
+        - MATRIX_EVAL="brew install gcc5 && CC=gcc-5 && CXX=g++-5"
       env:
         - MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0"
         - CONFIGURE_FLAGS="--enable-prere=no --enable-vip=no --enable-buildbot=yes"
