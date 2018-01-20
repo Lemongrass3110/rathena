@@ -115,6 +115,21 @@ matrix:
       env:
         - MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0"
         - CONFIGURE_FLAGS="--enable-prere=no --enable-vip=no --enable-buildbot=yes"
+# CMake
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-5
+      env:
+         - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
+      script:
+         - mkdir cbuild
+         - cd cbuild
+         - cmake -DBUILDBOT ..
+         - make
 
 before_install:
     - eval "${MATRIX_EVAL}"
