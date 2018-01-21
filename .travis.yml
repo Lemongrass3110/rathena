@@ -111,6 +111,7 @@ matrix:
     - os: osx
       osx_image: xcode8
       install:
+        - brew update
         - brew install mysql
         - brew tap homebrew/services
         - brew services start mysql
