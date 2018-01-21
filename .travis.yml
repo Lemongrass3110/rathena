@@ -110,8 +110,12 @@ matrix:
 #   Version 5 on OSX
     - os: osx
       osx_image: xcode8
-      env:
-        - MATRIX_EVAL="brew install gcc5 && CC=gcc-5 && CXX=g++-5"
+      install:
+        - brew install mysql
+        - brew tap homebrew/services
+        - brew services start mysql
+#      env:
+#        - MATRIX_EVAL="brew install gcc5 && CC=gcc-5 && CXX=g++-5"
       env:
         - MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0"
         - CONFIGURE_FLAGS="--enable-prere=no --enable-vip=no --enable-buildbot=yes"
