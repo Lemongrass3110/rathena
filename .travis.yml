@@ -128,7 +128,7 @@ matrix:
       script:
          - mkdir cbuild
          - cd cbuild
-         - cmake -DBUILDBOT ..
+         - cmake -G "Unix Makefiles" ..
          - make
 
 before_install:
