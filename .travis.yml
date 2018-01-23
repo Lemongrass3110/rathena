@@ -112,16 +112,15 @@ matrix:
       osx_image: xcode8
       install:
         - brew update
+        - brew install gcc5
         - brew install mysql
         - brew tap homebrew/services
         - brew services start mysql
         - brew services list
         - launchctl list | grep mysql
-#      env:
-#        - MATRIX_EVAL="brew install gcc5 && CC=gcc-5 && CXX=g++-5"
       env:
 #        - MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0"
-        - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
+        - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
         - CONFIGURE_FLAGS="--enable-prere=no --enable-vip=no --enable-buildbot=yes"
       script:
         - ./configure $CONFIGURE_FLAGS
