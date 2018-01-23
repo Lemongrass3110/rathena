@@ -120,8 +120,18 @@ matrix:
 #      env:
 #        - MATRIX_EVAL="brew install gcc5 && CC=gcc-5 && CXX=g++-5"
       env:
-        - MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0"
+#        - MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0"
+        - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
         - CONFIGURE_FLAGS="--enable-prere=no --enable-vip=no --enable-buildbot=yes"
+      script:
+        - ./configure $CONFIGURE_FLAGS
+        - cat config.log
+        - ./tools/ci/npc.sh
+        - make clean
+        - make server
+        - ./login-server --run-once
+        - ./char-server --run-once
+        - ./map-server --run-once
 # CMake
     - os: linux
       addons:
