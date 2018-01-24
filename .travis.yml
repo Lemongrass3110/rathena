@@ -116,8 +116,9 @@ matrix:
         - brew install mysql
         - brew tap homebrew/services
         - brew services start mysql
-#        - brew services list
-#        - launchctl list | grep mysql
+#         MySQL takes a while to start...
+        - brew services list
+        - launchctl list | grep mysql
       before_install: false
       env:
 #        - MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0"
