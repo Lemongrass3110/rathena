@@ -112,7 +112,6 @@ matrix:
       osx_image: xcode9.2
       install:
         - brew update
-#        - brew install gcc5
         - brew install mysql
         - brew tap homebrew/services
         - brew services start mysql
@@ -121,13 +120,9 @@ matrix:
         - launchctl list | grep mysql
       before_install: false
       env:
-#        - MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0"
-#        - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
         - CONFIGURE_FLAGS="--enable-prere=no --enable-vip=no --enable-buildbot=yes --enable-lto=no"
       script:
         - ./configure $CONFIGURE_FLAGS
-        - cat config.log
-        - ./tools/ci/npc.sh
         - make clean
         - make server
         - ./login-server --run-once
